@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Top 10 Places</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+</head>
+<style>
+#map {width: 1600px; height: 700px}
+</style>
+<body>
+<div id="map"></div>
+</body>
+<script>
+var map_center = [10.3392, 123.8537];
+var mapOptions = {
+  center: map_center,
+  zoom: 5.5
+}
+var map = L.map('map', mapOptions);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 12,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+// Places
+auf_latlong = [15.14527, 120.59431];
+auf_marker = L.marker(auf_latlong).addTo(map);
+
+boracay_latlong = [11.9476, 121.9370];
+boracay_circle = L.circle(boracay_latlong, {radius: 10000, color: 'red'}).addTo(map);
+
+davao_latlong = [7.2385, 125.7495];
+davao_marker = L.marker(davao_latlong).addTo(map);
+
+puerto_princesa_latlong = [9.6793, 118.7416];
+puerto_princesa_circle = L.circle(puerto_princesa_latlong, {radius: 15000, color: 'pink'}).addTo(map);
+
+cebu_latlong = [10.2811, 123.9141];
+cebu_marker = L.marker(cebu_latlong).addTo(map);
+
+var polyline_latlngs = [
+    [[8.3392, 123.8537],
+     [10.3392, 123.8537],
+     [10.3392, 124.8537],
+     [9.3392, 124.8537],
+     [9.3392, 123.8537],
+     [8.3392, 124.8537]
+    ],
+    [[40.78, -73.91],
+     [41.83, -87.62],
+     [32.76, -96.72]]
+];
+polyline = L.polyline(polyline_latlngs, {color: 'red'}).addTo(map);
+
+</script>
+</html>
